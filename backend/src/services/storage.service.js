@@ -2,12 +2,12 @@ const ImageKit = require("@imagekit/nodejs")
 const { fill } = require("three/src/extras/TextureUtils.js")
 
 const imagekit = new ImageKit({ 
-    privateKey: "private_Vgkykgqnf5IVZr1rrnqKdbAmwVQ="
+    privateKey: process.env.IMAGEKIT_PRIVATE_KEY
  })
 
  async function uploadFile (buffer) {
     const result = await imagekit.files.upload({  
-        file: buffer,
+        file: buffer.toString("base64"),
         fileName: "image.jpg"
      })
 
